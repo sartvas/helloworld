@@ -22,3 +22,16 @@ img {
     display: block;
     width: 500px;
 }
+
+.parent {
+    position: relative;
+    background: #948e8e;
+    width: 1000px;
+    height: 800px;
+}
+
+.child {
+    position: absolute;
+    top: 10px;
+    right: 40px;
+}
