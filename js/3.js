@@ -1,5 +1,9 @@
-let userFilm = prompt('Один из последних просмотренных фильмов?', '');
-while(userFilm == null||userFilm == ''||userFilm == 'undefined'||userFilm.length > 50||userFilm == ' '){
+
+let numberOfFims = +prompt("Сколько фильмов вы уже посмотрели?", '');
+
+while (numberOfFims == '' || numberOfFims == 'undefined'|| numberOfFims == null){
     alert("Неверный ввод, повторите снова");
-    userFilm = prompt('Один из последних просмотренных фильмов?', '');
+    numberOfFims = +prompt("Сколько фильмов вы уже посмотрели?", '');
 }
+
+console.log(numberOfFims);
