@@ -18,16 +18,15 @@ h1 {
 img {
     position: absolute;
     top: 0;
-    right: 0;
     display: block;
-    width: 500px;
+    width: 375px;
 }
 
 .parent {
     position: relative;
     background: #948e8e;
-    width: 1000px;
-    height: 800px;
+    width: 100%;
+    height: 200px;
 }
 
 .child {

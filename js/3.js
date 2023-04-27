@@ -1,9 +1,23 @@
+function getMathResult(firstArg, secondArg) {
 
-let numberOfFims = +prompt("Сколько фильмов вы уже посмотрели?", '');
+    let result = "";
 
-while (numberOfFims == '' || numberOfFims == 'undefined'|| numberOfFims == null){
-    alert("Неверный ввод, повторите снова");
-    numberOfFims = +prompt("Сколько фильмов вы уже посмотрели?", '');
+    if (typeof(secondArg) != "number"|| secondArg == 0 || secondArg < 0){
+
+        result = firstArg;
+
+    }  else {
+
+        for (let i = 1; i <= secondArg; i++){
+
+            result += `${firstArg*i}---`;
+        }
+
+        result = result.slice(0, -3);
+    }
+
+    return result;
+
 }
 
-console.log(numberOfFims);
+console.log(getMathResult(5,10));

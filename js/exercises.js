@@ -121,3 +121,20 @@ function thirdTask() {
 }
 
 console.log("***********".length)
+
+
+// Место для первой задачи
+const userName = 'Антон';
+function sayHello(userName) {
+    return `Привет, userName`;
+}
+
+// Место для второй задачи
+const startNumber = 5;
+function returnNeighboringNumbers(startNumber) {
+    const arrNumber = [];
+    arrNumber.push(startNumber - 1);
+    arrNumber.push(startNumber);
+    arrNumber.push(startNumber+1);
+    return arrNumber;
+}
