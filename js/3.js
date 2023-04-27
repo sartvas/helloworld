@@ -1,23 +1,6 @@
-function getMathResult(firstArg, secondArg) {
+let arr = ["Keep", "Remove", "Keep", "Remove", "Keep"];
 
-    let result = "";
 
-    if (typeof(secondArg) != "number"|| secondArg == 0 || secondArg < 0){
+const removeEveryOther = arr => arr.filter((item, i) =>  i % 2 == 0);
 
-        result = firstArg;
-
-    }  else {
-
-        for (let i = 1; i <= secondArg; i++){
-
-            result += `${firstArg*i}---`;
-        }
-
-        result = result.slice(0, -3);
-    }
-
-    return result;
-
-}
-
-console.log(getMathResult(5,10));
+console.log(removeEveryOther());

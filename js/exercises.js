@@ -132,9 +132,30 @@ function sayHello(userName) {
 // Место для второй задачи
 const startNumber = 5;
 function returnNeighboringNumbers(startNumber) {
-    const arrNumber = [];
-    arrNumber.push(startNumber - 1);
-    arrNumber.push(startNumber);
-    arrNumber.push(startNumber+1);
-    return arrNumber;
+    return  [startNumber - 1, startNumber, startNumber + 1];
 }
+
+
+function getMathResult(firstArg, secondArg) {
+
+    let result = "";
+
+    if (typeof(secondArg) != "number"|| secondArg == 0 || secondArg < 0){
+
+        result = firstArg;
+
+    }  else {
+
+        for (let i = 1; i <= secondArg; i++){
+
+            result += `${firstArg*i}---`;
+        }
+
+        result = result.slice(0, -3);
+    }
+
+    return result;
+
+}
+
+console.log(getMathResult(5,10));
