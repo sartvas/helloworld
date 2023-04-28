@@ -1,7 +1,16 @@
 "use strict"
 
-const nameUser = "andrea agassi"
+let numberOfFims = 0;
 
-let normalName = nameUser.charAt(0).toLocaleUpperCase() + nameUser.s(2);
+const personalMovieDB = {
+    count : numberOfFims,
+    movies : {},
+    actors : {},
+    genres : [],
+    privat : false,
 
-console.log(normalName);
+
+}
+
+
+console.log(personalMovieDB.privat);
