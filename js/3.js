@@ -1,6 +1,7 @@
-let arr = ["Keep", "Remove", "Keep", "Remove", "Keep"];
+"use strict"
 
+const nameUser = "andrea agassi"
 
-const removeEveryOther = arr => arr.filter((item, i) =>  i % 2 == 0);
+let normalName = nameUser.charAt(0).toLocaleUpperCase() + nameUser.s(2);
 
-console.log(removeEveryOther());
+console.log(normalName);
