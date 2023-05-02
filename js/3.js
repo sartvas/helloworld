@@ -1,16 +1,15 @@
-"use strict"
+function findMaxNumber(a, b, c, d){
+    if (arguments.length < 4){
+        return 0;
+    }
 
-let numberOfFims = 0;
-
-const personalMovieDB = {
-    count : numberOfFims,
-    movies : {},
-    actors : {},
-    genres : [],
-    privat : false,
-
-
+    for(let i = 0; i < 4; i++){
+        if (typeof(arguments[i]) != "number") {
+            return 0;
+        }
+    }
+    
+    return Math.max(a, b, c, d);
 }
 
-
-console.log(personalMovieDB.privat);
+console.log(findMaxNumber(2,12,345,2));

@@ -141,21 +141,77 @@ function getMathResult(firstArg, secondArg) {
     let result = "";
 
     if (typeof(secondArg) != "number"|| secondArg == 0 || secondArg < 0){
-
         result = firstArg;
-
     }  else {
-
         for (let i = 1; i <= secondArg; i++){
-
             result += `${firstArg*i}---`;
         }
-
         result = result.slice(0, -3);
     }
-
     return result;
 
 }
 
 console.log(getMathResult(5,10));
+
+// Место для первой задачи
+function calculateVolumeAndArea(num) {
+
+    if (typeof(num) != 'number' || num < 0 || !Number.isInteger(num)) {
+        return 'При вычислении произошла ошибка';
+    }
+
+    return `Объем куба: ${Math.pow(num, 3)}, площадь всей поверхности: ${6 * Math.pow(num, 2)}`;
+}
+
+// Место для второй задачи
+function getCoupeNumber(num) {
+
+    if(num === 0 || num > 36){
+        return 'Таких мест в вагоне не существует';
+    }
+
+    if(!Number.isInteger(num) || num < 0 || typeof(num) != 'number'){
+        return "Ошибка. Проверьте правильность введенного номера места";
+    }
+
+    return Math.ceil(num/4);
+
+}
+
+
+// Место для первой задачи
+function getTimeFromMinutes(time) {
+
+    if(!Number.isInteger(time) || time < 0){
+       return 'Ошибка, проверьте данные';
+    }
+
+    let minutes = time%60;
+    let hour = (time-minutes)/60;
+    
+
+    if (hour >= 5 && hour <=10 || hour === 0){
+        return `Это ${hour} часов и ${minutes} минут`;
+    } else if (hour === 1){
+        return `Это ${hour} час и ${minutes} минут`;
+    } else if (hour > 1 && hour <=5){
+        return `Это ${hour} часа и ${minutes} минут`;
+    }
+
+}
+
+// Место для второй задачи
+function findMaxNumber(a, b, c, d){
+    if (arguments.length < 4){
+        return 0;
+    }
+
+    for(let i = 0; i < 4; i++){
+        if (typeof(arguments[i]) != "number") {
+            return 0;
+        }
+    }
+    
+    return Math.max(a, b, c, d);
+}
