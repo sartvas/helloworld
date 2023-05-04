@@ -48,8 +48,8 @@ let userFilm, ratingOfFilm;
 
 function rememberMyFilms(){
     for (let i = 0; i < 2; i++){
-        userFilm = prompt('Один из последних просмотренных фильмов?', '');
-        while(userFilm == null||userFilm == ''||userFilm == 'undefined'||userFilm.length > 50||userFilm == ' '){
+        userFilm = prompt('Один из последних просмотренных фильмов?', '').trim();
+        while(userFilm == null||userFilm == ''||userFilm == 'undefined'||userFilm.length > 50){
             alert("Неверный ввод, повторите снова");
             userFilm = prompt('Один из последних просмотренных фильмов?', '');
         }
@@ -58,7 +58,7 @@ function rememberMyFilms(){
     }
 }
 
-//rememberMyFilms();
+rememberMyFilms();
 
 
 
@@ -70,6 +70,6 @@ function writeYourGenres(){
     console.log(personalMovieDB.genres);
 }
 
-writeYourGenres();
+//writeYourGenres();
 
 showMyDB(personalMovieDB.privat);
