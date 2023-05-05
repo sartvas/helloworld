@@ -215,3 +215,41 @@ function findMaxNumber(a, b, c, d){
     
     return Math.max(a, b, c, d);
 }
+
+
+const personalPlanPeter = {
+    name: "Peter",
+    age: "29",
+    skills: {
+        languages: ['ru', 'eng'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%'
+        },
+        exp: '1 month'
+    },
+    
+    //'Мне 29 и я владею языками: RU ENG'
+    showAgeAndLangs: function (data) { 
+        const [ru, eng] = data.skills.languages;
+        return `Мне ${data.age} и я владею языками: ${ru.toUpperCase()} ${eng.toUpperCase()}`;
+    }
+};
+
+function showExperience(plan) {
+    const {exp} = plan.skills;
+    return exp
+}
+
+//"Язык js изучен на 20% Язык php изучен на 10%"
+function showProgrammingLangs(plan) {
+
+    let result = '';
+    
+    for(let key in plan.skills.programmingLangs) {
+        result += `Язык ${key} изучен на ${plan.skills.programmingLangs[key]}\n`;
+    }
+
+    return result;
+
+}

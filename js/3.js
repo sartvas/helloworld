@@ -1,22 +1,12 @@
-const personalPlanPeter = {
-    name: "Peter",
-    age: "29",
-    skills: {
-        languages: ['ru', 'eng'],
-        programmingLangs: {
-            js: '20%',
-            php: '10%'
-        },
-        exp: '1 month'
-    },
+let arr = ['what', 'the', 'fuck'];
 
-    showAgeAndLangs: function (data) {
-        const [ru, eng] = data.skills.languages;
-        return `Мне ${data.age} и я владею языками: ${ru.toUpperCase()} ${eng.toUpperCase()}`;
-    }
-};
+arr.splice(1, 1)
+
+console.log(arr);
 
 
-//=> 'Мне 29 и я владею языками: RU ENG'
+let arr2 = ["Я", "изучаю", "JavaScript"];
 
-//personalPlanPeter.showAgeAndLangs(personalPlanPeter);
+arr2.splice(1, 1); // начиная с индекса 1, удалить 1 элемент
+
+console.log( arr2 ); // осталось ["Я", "JavaScript"]
