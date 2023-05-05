@@ -1,15 +1,22 @@
-function findMaxNumber(a, b, c, d){
-    if (arguments.length < 4){
-        return 0;
-    }
+const personalPlanPeter = {
+    name: "Peter",
+    age: "29",
+    skills: {
+        languages: ['ru', 'eng'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%'
+        },
+        exp: '1 month'
+    },
 
-    for(let i = 0; i < 4; i++){
-        if (typeof(arguments[i]) != "number") {
-            return 0;
-        }
+    showAgeAndLangs: function (data) {
+        const [ru, eng] = data.skills.languages;
+        return `Мне ${data.age} и я владею языками: ${ru.toUpperCase()} ${eng.toUpperCase()}`;
     }
-    
-    return Math.max(a, b, c, d);
-}
+};
 
-console.log(findMaxNumber(2,12,345,2));
+
+//=> 'Мне 29 и я владею языками: RU ENG'
+
+//personalPlanPeter.showAgeAndLangs(personalPlanPeter);

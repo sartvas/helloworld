@@ -6,6 +6,11 @@
     padding-top: 10px;
 }
 
+.calculate__button_wrapper {
+    display: flex;
+    justify-content:center;
+}
+
 .calculate .calculate__tablo {
     width: 250px;
     height: 40px;
@@ -13,9 +18,11 @@
     margin: 0 auto;
 }
 
-.calculate .calculate__button {
+button.calculate__button {
     background: url("../img/button.svg") center center/cover no-repeat;
-    width: 50px;
-    height: 65px;
+    width: 51px;
+    height: 41px;
+    border-style: none;
+    cursor: pointer;
 
 }
