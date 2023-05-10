@@ -253,3 +253,25 @@ function showProgrammingLangs(plan) {
     return result;
 
 }
+
+const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+function showFamily(arr) {
+    
+    if(arr.length < 1) {
+        return 'Семья пуста';
+    }
+    
+    return `Семья состоит из: ${family.join(" ")}`;
+    
+}
+
+const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+function standardizeStrings(arr) {
+    arr.forEach(city => {
+        console.log(city.toLowerCase())
+    })
+}
+
+standardizeStrings(favoriteCities);

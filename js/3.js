@@ -1,5 +1,10 @@
+const someString = 1;
 
-  let numbers = [0, 3, 4, 5];
+function reverse(str) {
+    if(typeof(str) != 'string'){
+        return "Ошибка!"
+    }
+    return str.split('').reverse().join('');
+}
 
-
-  console.log(numbers.map(item => Math.pow(item, 2)).reduce((a, b) => a + b));
+console.log(reverse(someString));
