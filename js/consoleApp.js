@@ -27,9 +27,8 @@ const personalMovieDB = {
             personalMovieDB.genres[i] = prompt(`Ваш любимый жанр под номером ${i+1} это: `, '');
         }
 
-        let count = 1;
-        personalMovieDB.genres.forEach(item => {
-            console.log(`Ваш любимый жанр #${count} - это ${item}`);
+        personalMovieDB.genres.forEach((item, i) => {
+            console.log(`Ваш любимый жанр #${i + 1} - это ${item}`);
             count++;
         })
     
