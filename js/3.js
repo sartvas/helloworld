@@ -1,10 +1,11 @@
-const someString = 1;
+"use strict"
 
-function reverse(str) {
-    if(typeof(str) != 'string'){
-        return "Ошибка!"
-    }
-    return str.split('').reverse().join('');
+const _ = require('lodash/core');
+
+const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam'];
+
+function sortStudentsByGroups(arr) {
+
 }
 
-console.log(reverse(someString));
+console.log(_.chunk(students, 3));
