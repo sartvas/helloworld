@@ -376,6 +376,33 @@ console.log(isBudgetEnough(shoppingMallData));
 
 
 
+let x1 = 5; 
+console.log( x1++ ); // Если нужно увеличить и при этом получить значение переменной до увеличения
+
+[ ] + false - null + true // string+false = string, string-null =  вычитаение от строки даёт NaN
+
+let y = 1; 
+let x = y = 2; 
+console.log(x); 
+
+[ ] + 1 + 2 //12 - string
+
+console.log( "1"[0] ) //обращение к 0 элементу стринга
+
+2 && 1 && null && 0 && undefined // и спотыкается на лжи - null
+
+!!( a && b ) & (a && b)
+
+console.log( null || 2 && 3 || 4 ); // или спотыкается на правде - null
+
+a = [1, 2, 3]; b = [1, 2, 3];
+console.log(a == b)
+
+console.log( +"Infinity"); //Infinity - бесконечность
+
+"Ёжик" > "яблоко" ()
+
+ 0 || "" || 2 || undefined || true || falsе  // или спотыкается на правде - 2
 
 
 
