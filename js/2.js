@@ -21,3 +21,8 @@ switch (num) {
 }
 
 
+function addLength(str) {
+    return str.map((item)=> item + item.length);
+   }
+
+   console.log("apple ban".split(", "))

@@ -33,6 +33,11 @@ myArr2.forEach( (item, i, arr) => {
      console.log(`Элемент с индексом ${i} и значением ${item} в массиве ${arr}`);
 })
 
+console.log("***split join***")
+
+const allUsers = "Vasya, Petya, Irina, Mike, Kolya";
+console.log(allUsers.split(', ').filter(item => item != 'Irina').join(', '));
+
 console.log("***splice***")
 
 let whatthef = ['what', 'the', 'f'];
@@ -72,8 +77,10 @@ console.log(newUser1.name, newUser2)
 console.log("***filter***")
 
 const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
 console.log(`Выведем только чётные числа: ${nums.filter(item => item % 2 == 0)}`);
+const allStudent = ["Ann", "Piter", "John", "Mikle", "Vasyan"];
+const studentsWhoCan = ["John", "Ann"];
+console.log(allStudent.filter(item => !studentsWhoCan.includes(item))); // результат всех студентов 1-го массива, исключая 2-й.
 
 console.log("***map***")
 
@@ -89,8 +96,5 @@ console.log("***sort***")
 const sortNumsArray = [33,56,7,8,1,2,54];
 console.log(sortNumsArray.sort((a, b) =>  a - b));
 
-console.log("***split join***")
 
-const allUsers = "Vasya, Petya, Irina, Mike, Kolya";
-console.log(allUsers.split(', ').filter(item => item != 'Irina').join(', '));
 
