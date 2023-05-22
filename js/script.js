@@ -67,6 +67,5 @@ function appendDelete(list){
 //Сортируем список и добавляем элементы в виде корзиночек
 editFilmList(promoInteractiveList, appendDelete);
 
-console.log(promoBg);
-
-
+const addingInput = document.querySelector('adding__input');
+console.log(addingInput);
