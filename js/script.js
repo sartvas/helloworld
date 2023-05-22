@@ -26,13 +26,13 @@ const movieDB = {
 
 //1) Удалить все рекламные блоки со страницы (правая часть сайта)
 
-const promoAdv = document.querySelector('.promo__adv'),
+const promoAdv = document.querySelectorAll('.promo__adv img'),
       promoGenre = document.querySelector('.promo__genre'),
       promoBg = document.querySelector('.promo__bg'),
-      promoInteractiveList = document.querySelectorAll('.promo__interactive-item');
+      promoInteractiveList = document.querySelectorAll('.promo__interactive-item'),
+      btn = document.querySelector("button");
 
-
-promoAdv.querySelectorAll('img').forEach(item => {item.remove()});
+    promoAdv.forEach(item => {item.remove()});
 
 //2) Изменить жанр фильма, поменять "комедия" на "драма"
 
@@ -42,10 +42,31 @@ promoGenre.textContent = 'Драма';
 // Реализовать только при помощи JS
 
 
+promoBg.style.backgroundImage = 'url("img/bg.jpg")';
 
 // 4) Список фильмов на странице сформировать на основании данных из этого JS файла.
 // Отсортировать их по алфавиту 
 
-promoInteractiveList.forEach((item, i) => {
-    item.textContent = `${i+1}. ${movieDB.movies.sort()[i]}`
-})
+
+
+function editFilmList (list, foo){
+    list.forEach((item, i) => {
+        item.textContent = `${i+1}. ${movieDB.movies.sort()[i]}`
+    })
+    foo(list)
+}
+
+function appendDelete(list){
+    for (let i = 0; i < list.length; i++){
+        let div = document.createElement('div');
+        div.classList.add('delete');
+        list[i].append(div);
+    }
+}
+
+//Сортируем список и добавляем элементы в виде корзиночек
+editFilmList(promoInteractiveList, appendDelete);
+
+console.log(promoBg);
+
+
