@@ -12,6 +12,23 @@
 
 5) Добавить нумерацию выведенных фильмов */
 
+/* Задания на урок:
+
+1) Реализовать функционал, что после заполнения формы и нажатия кнопки "Подтвердить" - 
+новый фильм добавляется в список. Страница не должна перезагружаться.
+Новый фильм должен добавляться в movieDB.movies.
+Для получения доступа к значению input - обращаемся к нему как input.value;
+P.S. Здесь есть несколько вариантов решения задачи, принимается любой, но рабочий.
+
+2) Если название фильма больше, чем 21 символ - обрезать его и добавить три точки
+
+3) При клике на мусорную корзину - элемент будет удаляться из списка (сложно)
+
+4) Если в форме стоит галочка "Сделать любимым" - в консоль вывести сообщение: 
+"Добавляем любимый фильм"
+
+5) Фильмы должны быть отсортированы по алфавиту */
+
 'use strict';
 
 const movieDB = {
@@ -29,12 +46,15 @@ const movieDB = {
 const promoAdv = document.querySelectorAll('.promo__adv img'),
       promoGenre = document.querySelector('.promo__genre'),
       promoBg = document.querySelector('.promo__bg'),
-      promoInteractiveList = document.querySelectorAll('.promo__interactive-item'),
-      btn = document.querySelector("button");
+      promoInteractiveList = document.querySelector('.promo__interactive-list'),
+      btn = document.querySelector("button"),
+      myForm = document.forms.addfilm,
+      deleteElem = document.querySelectorAll('.delete');
 
     promoAdv.forEach(item => {item.remove()});
 
 //2) Изменить жанр фильма, поменять "комедия" на "драма"
+
 
 promoGenre.textContent = 'Драма';
 
@@ -49,23 +69,50 @@ promoBg.style.backgroundImage = 'url("img/bg.jpg")';
 
 
 
-function editFilmList (list, foo){
-    list.forEach((item, i) => {
-        item.textContent = `${i+1}. ${movieDB.movies.sort()[i]}`
-    })
-    foo(list)
-}
+promoInteractiveList.innerHTML = '';
+movieDB.movies.sort();
+movieDB.movies.forEach((item, i) => {
+    promoInteractiveList.innerHTML += `
+        <li class="promo__interactive-item">${i+1}. ${item}
+            <div class="delete"></div>
+        </li>
+    `
+})
 
-function appendDelete(list){
-    for (let i = 0; i < list.length; i++){
-        let div = document.createElement('div');
-        div.classList.add('delete');
-        list[i].append(div);
+
+btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(addfilm.nameInput.value)
+    if (addfilm.nameInput.value.length > 21){
+        addfilm.nameInput.value = addfilm.nameInput.value.slice(0, 21) + '...';
     }
-}
+    movieDB.movies.push(addfilm.nameInput.value)
+    promoInteractiveList.innerHTML = '';
+    movieDB.movies.sort();
+    movieDB.movies.forEach((item, i) => {
+        promoInteractiveList.innerHTML += `
+            <li class="promo__interactive-item">${i+1}. ${item}
+                <div class="delete"></div>
+            </li>
+        `
+    })
+    if(myForm.check.checked){
+        console.log("Добавляем любимый фильм");
+    }
 
-//Сортируем список и добавляем элементы в виде корзиночек
-editFilmList(promoInteractiveList, appendDelete);
+})
 
-const addingInput = document.querySelector('adding__input');
-console.log(addingInput);
+const filmItems = document.querySelectorAll('.promo__interactive-item');
+
+console.log(deleteElem)
+
+deleteElem.forEach(item => {
+  item.addEventListener('click', (e) => {
+    console.log(e.target);
+  })
+})
+
+
+
+
+
