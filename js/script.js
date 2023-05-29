@@ -68,16 +68,20 @@ promoBg.style.backgroundImage = 'url("img/bg.jpg")';
 // Отсортировать их по алфавиту 
 
 
-
-promoInteractiveList.innerHTML = '';
-movieDB.movies.sort();
-movieDB.movies.forEach((item, i) => {
-    promoInteractiveList.innerHTML += `
+function makeNewList(list){
+    list.innerHTML = '';
+    movieDB.movies.sort();
+    movieDB.movies.forEach((item, i) => {
+        list.innerHTML += `
         <li class="promo__interactive-item">${i+1}. ${item}
             <div class="delete"></div>
         </li>
-    `
-})
+    `   
+    })
+}
+
+
+makeNewList(promoInteractiveList);
 
 
 btn.addEventListener('click', (e) => {
@@ -87,14 +91,9 @@ btn.addEventListener('click', (e) => {
         addfilm.nameInput.value = addfilm.nameInput.value.slice(0, 21) + '...';
     }
     movieDB.movies.push(addfilm.nameInput.value)
-    promoInteractiveList.innerHTML = '';
-    movieDB.movies.sort();
-    movieDB.movies.forEach((item, i) => {
-        promoInteractiveList.innerHTML += `
-            <li class="promo__interactive-item">${i+1}. ${item}
-                <div class="delete"></div>
-            </li>
-        `
+    makeNewList(promoInteractiveList);
+    document.addEventListener('DOMContentLoaded', () =>{
+        console.log(list)
     })
     if(myForm.check.checked){
         console.log("Добавляем любимый фильм");
@@ -102,15 +101,6 @@ btn.addEventListener('click', (e) => {
 
 })
 
-const filmItems = document.querySelectorAll('.promo__interactive-item');
-
-console.log(deleteElem)
-
-deleteElem.forEach(item => {
-  item.addEventListener('click', (e) => {
-    console.log(e.target);
-  })
-})
 
 
 

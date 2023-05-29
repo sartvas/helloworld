@@ -1,6 +1,19 @@
-const numbers = [1, 2, 4];
+function likeOrDislike(buttons) {
+    if (buttons.length < 1 || (buttons.length == 2 && buttons[0] == buttons[1])){
+      return 'Nothing';
+    }
+    
+    if (buttons.length == 1){
+      return buttons[0];
+    }
+    
+    return 'yyyy'
+  }
 
-const duplicates = numbers.filter((item, index) => index !== numbers.indexOf(item));
+  const arr = ['Dislike', 'Dislike'];
 
-console.log(Array.from(new Set(duplicates)));
+  console.log(likeOrDislike(arr));
 
+
+
+  console.log(arr.length == 2 && arr[0] == arr[1])
