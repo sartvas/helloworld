@@ -92,9 +92,6 @@ btn.addEventListener('click', (e) => {
     }
     movieDB.movies.push(addfilm.nameInput.value)
     makeNewList(promoInteractiveList);
-    document.addEventListener('DOMContentLoaded', () =>{
-        console.log(list)
-    })
     if(myForm.check.checked){
         console.log("Добавляем любимый фильм");
     }
