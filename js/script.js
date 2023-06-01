@@ -31,71 +31,64 @@ P.S. Здесь есть несколько вариантов решения з
 
 'use strict';
 
-const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против"
-    ]
-};
-
-//1) Удалить все рекламные блоки со страницы (правая часть сайта)
-
-const promoAdv = document.querySelectorAll('.promo__adv img'),
-      promoGenre = document.querySelector('.promo__genre'),
-      promoBg = document.querySelector('.promo__bg'),
-      promoInteractiveList = document.querySelector('.promo__interactive-list'),
-      btn = document.querySelector("button"),
-      myForm = document.forms.addfilm,
-      deleteElem = document.querySelectorAll('.delete');
-
+document.addEventListener('DOMContentLoaded', ()=>{
+    const movieDB = {
+        movies: [
+            "Логан",
+            "Лига справедливости",
+            "Ла-ла лэнд",
+            "Одержимость",
+            "Скотт Пилигрим против"
+        ]
+    };
+    
+    //1) Удалить все рекламные блоки со страницы (правая часть сайта)
+    
+    const promoAdv = document.querySelectorAll('.promo__adv img'),
+          promoGenre = document.querySelector('.promo__genre'),
+          promoBg = document.querySelector('.promo__bg'),
+          promoInteractiveList = document.querySelector('.promo__interactive-list'),
+          btn = document.querySelector("button"),
+          addForm = document.querySelector('.add'),
+          inputForm = addForm.querySelector('.adding__input'),
+          addCheckBox = addForm.querySelector('[type=checkbox]'),
+          myForm = document.forms.addfilm,
+          deleteElem = document.querySelectorAll('.delete');
+    
     promoAdv.forEach(item => {item.remove()});
 
-//2) Изменить жанр фильма, поменять "комедия" на "драма"
-
-
-promoGenre.textContent = 'Драма';
-
-// 3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
-// Реализовать только при помощи JS
-
-
-promoBg.style.backgroundImage = 'url("img/bg.jpg")';
-
-// 4) Список фильмов на странице сформировать на основании данных из этого JS файла.
-// Отсортировать их по алфавиту 
-
-
-function makeNewList(list){
-    list.innerHTML = '';
-    movieDB.movies.sort();
-    movieDB.movies.forEach((item, i) => {
-        list.innerHTML += `
-        <li class="promo__interactive-item">${i+1}. ${item}
-            <div class="delete"></div>
-        </li>
-    `   
+    promoGenre.textContent = 'Драма';  //2) Изменить жанр фильма, поменять "комедия" на "драма"
+    
+    promoBg.style.backgroundImage = 'url("img/bg.jpg")';   // 3) Изменить задний фон постера с фильмом на изображение "bg.jpg"
+    
+    makeNewList(movieDB.movies, promoInteractiveList);
+    
+    addForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        if (inputForm.value.length > 20){
+            inputForm.value = inputForm.value.slice(0, 21) + '...';
+        }
+        if(addCheckBox.checked){
+            console.log(`Добавляем любимый фильм ${inputForm.value}`)
+        }
+        movieDB.movies.push(inputForm.value);
+        makeNewList(movieDB.movies, promoInteractiveList);
+        e.target.reset();
     })
-}
 
 
-makeNewList(promoInteractiveList);
-
-
-btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log(addfilm.nameInput.value)
-    if (addfilm.nameInput.value.length > 21){
-        addfilm.nameInput.value = addfilm.nameInput.value.slice(0, 21) + '...';
+    function makeNewList(bd, list){
+        list.innerHTML = '';
+        bd.sort();
+        bd.forEach((item, i) => {
+            list.innerHTML += `
+            <li class="promo__interactive-item">${i+1}. ${item}
+                <div class="delete"></div>
+            </li>
+        `   
+        })
     }
-    movieDB.movies.push(addfilm.nameInput.value)
-    makeNewList(promoInteractiveList);
-    if(myForm.check.checked){
-        console.log("Добавляем любимый фильм");
-    }
-
+   
 })
 
 
