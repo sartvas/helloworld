@@ -52,8 +52,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
           addForm = document.querySelector('.add'),
           inputForm = addForm.querySelector('.adding__input'),
           addCheckBox = addForm.querySelector('[type=checkbox]'),
-          myForm = document.forms.addfilm,
-          deleteElem = document.querySelectorAll('.delete');
+          myForm = document.forms.addfilm;
     
     promoAdv.forEach(item => {item.remove()});
 
@@ -65,15 +64,22 @@ document.addEventListener('DOMContentLoaded', ()=>{
     
     addForm.addEventListener('submit', (e)=>{
         e.preventDefault();
-        if (inputForm.value.length > 20){
-            inputForm.value = inputForm.value.slice(0, 21) + '...';
+
+        if(inputForm.value){
+
+            if (inputForm.value.length > 20){
+                inputForm.value = inputForm.value.slice(0, 21) + '...';
+            }
+            movieDB.movies.push(inputForm.value);
+            makeNewList(movieDB.movies, promoInteractiveList);
         }
+
+        e.target.reset();
+
         if(addCheckBox.checked){
             console.log(`Добавляем любимый фильм ${inputForm.value}`)
         }
-        movieDB.movies.push(inputForm.value);
-        makeNewList(movieDB.movies, promoInteractiveList);
-        e.target.reset();
+
     })
 
 
@@ -87,6 +93,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
             </li>
         `   
         })
+
+        document.querySelectorAll('.delete').forEach((item, i)=>{
+            item.addEventListener('click', () =>{
+                item.parentElement.remove();
+                movieDB.movies.splice(i, 1);
+                makeNewList(movieDB.movies, promoInteractiveList); //рекурсия
+            })
+
+        })
+
     }
    
 })
