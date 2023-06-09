@@ -40,15 +40,24 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
     //Реализация таймера
 
-    const myTime = '2023-06-10';
+    const myTime = '2023-12-30';
 
     function getElementOfdate(endtime){
-        const t = Date.parse(endtime) - new Date,
+        let days, seconds, minutes, hours
+        const t = Date.parse(endtime) - new Date();
+        //обработка отрицательной даты
+        if(t <= 0){ 
+            days = 0;
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
+        } else {
             days = Math.floor( (t/(1000*60*60*24)) ),
-            seconds = Math.floor( (t/1000) % 60 ),
+            hours = Math.floor( (t/(1000*60*60) % 24) )
             minutes = Math.floor( (t/1000/60) % 60 ),
-            hours = Math.floor( (t/(1000*60*60) % 24) );
-
+            seconds = Math.floor( (t/1000) % 60 );
+        }
+    
         return {
             'total': t,
             'days': days,
@@ -68,22 +77,29 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
         updateClock();
 
+        function zeroNumber(num){
+            if(num >=0 && num < 10){
+                return '0' + num;
+            } else {
+                return num;
+            }
+        }
+
         function updateClock(){
             const t = getElementOfdate(sometime);
-            days.innerHTML = t.days;
-            hours.innerHTML = t.hours;
-            minutes.innerHTML = t.minutes;
-            seconds.innerHTML = t.seconds;
-        }
+            days.innerHTML = zeroNumber(t.days);
+            hours.innerHTML = zeroNumber(t.hours);
+            minutes.innerHTML = zeroNumber(t.minutes);
+            seconds.innerHTML = zeroNumber(t.seconds);
 
 
-        if(t.total <= 0){
-            clearInterval(timeInterval);
+            if(t.total <= 0){
+                clearInterval(timeInterval);
+            }
         }
+
     }
 
-
-
-    setClock('.time', myTime);
+    setClock('.timer', myTime);
 
 })
