@@ -102,4 +102,38 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
     setClock('.timer', myTime);
 
+     //Реализация модального окна
+
+
+    const dataModal = document.querySelectorAll('[data-modal]'),
+          closeElem = document.querySelector('[data-close]'),
+          modalElem = document.querySelector('.modal');
+
+    dataModal.forEach(item => {
+        item.addEventListener('click', () =>{
+            modalElem.classList.remove('hide');
+            modalElem.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        })
+    })
+
+    function closeModalElem () {
+        modalElem.classList.remove('show');
+        modalElem.classList.add('hide');
+        document.body.style.overflow = '';
+    }
+
+    closeElem.addEventListener('click', closeModalElem);
+
+    modalElem.addEventListener('click', (e) => {
+        if (e.target === modalElem) {
+            closeModalElem();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === "Escape" && modalElem.classList.contains('show')) { 
+            closeModalElem();
+        }
+    });
 })
