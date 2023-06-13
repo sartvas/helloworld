@@ -109,14 +109,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
           closeElem = document.querySelector('[data-close]'),
           modalElem = document.querySelector('.modal');
 
-    dataModal.forEach(item => {
-        item.addEventListener('click', () =>{
-            modalElem.classList.remove('hide');
-            modalElem.classList.add('show');
-            document.body.style.overflow = 'hidden';
-        })
-    })
-
     function closeModalElem () {
         modalElem.classList.remove('show');
         modalElem.classList.add('hide');
@@ -127,9 +119,15 @@ window.addEventListener('DOMContentLoaded', ()=>{
         modalElem.classList.remove('hide');
         modalElem.classList.add('show');
         document.body.style.overflow = 'hidden';
+        clearTimeout(modalTimeOut);
     }
+    
 
-    let modalTimeOut = setTimeout(openModalElem, 5000);
+    dataModal.forEach(item => {
+        item.addEventListener('click', openModalElem);
+    })
+
+    const modalTimeOut = setTimeout(openModalElem, 30000);
 
     closeElem.addEventListener('click', closeModalElem);
 
@@ -145,5 +143,14 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
     });
 
-    console.log(document.documentElement.scrollTop)
+    function showScrollModal(){
+        if(window.scrollY + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
+            openModalElem();
+            window.removeEventListener('scroll', showScrollModal)
+            clearTimeout(modalTimeOut);
+        }
+    }
+
+    window.addEventListener('scroll', showScrollModal);
+
 })
