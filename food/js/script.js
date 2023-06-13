@@ -123,6 +123,14 @@ window.addEventListener('DOMContentLoaded', ()=>{
         document.body.style.overflow = '';
     }
 
+    function openModalElem (){
+        modalElem.classList.remove('hide');
+        modalElem.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+    let modalTimeOut = setTimeout(openModalElem, 5000);
+
     closeElem.addEventListener('click', closeModalElem);
 
     modalElem.addEventListener('click', (e) => {
@@ -136,4 +144,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
             closeModalElem();
         }
     });
+
+    console.log(document.documentElement.scrollTop)
 })
